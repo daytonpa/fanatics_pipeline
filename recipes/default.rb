@@ -8,7 +8,7 @@
 ## Install the yum_repository resource ##
 include_recipe 'yum::default'
 
-## List of recipes to run when converging ##
+##  Recipes for setting up and installing Jenkins ##
 %w( java jenkins_create_user jenkins_install
 	jenkins_plugins jenkins_cli ).each do |recipe|
 	puts "Converging recipe #{recipe}..."
@@ -17,7 +17,8 @@ end
 
 # include_recipe 'chef-zero'
 
-# %w( knife berkshelf ).each do |recipe|
-# 	puts "Converging recipe #{recipe}..."
-# 	include_recipe "pipeline::#{recipe}"
-# end
+## Recipes for building and setting up the pipeline ##
+%w( pipeline_berkshelf ).each do |recipe|
+	puts "Converging recipe #{recipe}..."
+	include_recipe "fanatics_pipeline::#{recipe}"
+end

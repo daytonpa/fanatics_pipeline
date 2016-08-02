@@ -3,6 +3,6 @@ file "#{node['jenkins-centos']['home_dir']}/.ssh/config" do
 	Host github.com
 		StrictHostKeyChecking no
 	EOD
-  	owner node['jenkins']['server']['user']
-  	group node['jenkins']['server']['user']
+  	owner node['jenkins-centos']['user']
+  	group node['jenkins-centos']['group']
 end

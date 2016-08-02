@@ -15,9 +15,10 @@ node['jenkins-centos'].tap do |node|
 		action :create
 	end
 
-	## Install the default plugins and reload the Jenkins service if ##
-	## new plugins are installed, or if already installed plugins 	 ##
-	## are modified.												 ##
+	## Install the default plugins and reload the Jenkins service if 	##
+	## new plugins are installed, or if installed plugins are modified.	##
+
+	## Install default plugins ##
 	node['jenkins_plugins'].each do |plugin|
 		remote_file "#{node['plugins_dir']}/#{plugin}" do
 			owner node['owner']
@@ -33,7 +34,7 @@ node['jenkins-centos'].tap do |node|
 		end
 	end
 
-	## Install any extra plugins if they exist ##
+	## Install any extra plugins ##
 	if node['extra_plugins'] != nil
 		node['extra_plugins'].each do |plugin|
 			remote_file "#{node['plugins_dir']}/#{plugin}" do

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: fanatics_pipeline
-# Recipe:: install_jenkins.rb
+# Recipe:: jenkins_install.rb
 #
 # Copyright (c) 2016 Patrick Dayton, All Rights Reserved.
 #

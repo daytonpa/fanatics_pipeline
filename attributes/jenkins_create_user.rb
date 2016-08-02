@@ -9,7 +9,7 @@ default['jenkins-centos'].tap do |default|
 
 	## User ##
 	default['user'] = 'jenkins'
-	default['comment'] = 'default user and such as that'
+	default['comment'] = 'default user'
 
 	## Group and Owner ##
 	default['group'] = 'jenkins'
