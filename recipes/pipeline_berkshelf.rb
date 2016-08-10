@@ -7,19 +7,19 @@
 
 include_recipe 'build-essential'
 
-node['jenkins-centos'].tap do |node|
+node['jenkins-centos'].tap do |njc|
 
 	## Create the Berkshelf directory ##
-	directory "#{node['home_dir']}/.berkshelf" do
-		owner node['user']
-		group node['group']
+	directory "#{njc['home_dir']}/.berkshelf" do
+		owner njc['user']
+		group njc['group']
 		mode 0755
 	end
 
-	file "#{node['home_dir']}/.berkshelf/config.json" do
+	file "#{njc['home_dir']}/.berkshelf/config.json" do
  		content '{"ssl":{"verify": false }}'
-  		owner node['user']
-  		group node['group']
+  		owner njc['user']
+  		group njc['group']
 	end
 
 	chef_gem 'berkshelf' do
