@@ -6,9 +6,9 @@
 #
 # Download the Jenkins repository and key, and install
 #
-node['jenkins-centos'].tap do |node|
+node['jenkins-centos'].tap do |njc|
 	
-	node['repo'].tap do |repo|
+	njc['repo'].tap do |repo|
 	
 		## Download the Jenkins repo ##
 		yum_repository repo['name'] do
@@ -24,15 +24,15 @@ node['jenkins-centos'].tap do |node|
 	end
 
 	## Set the home directory permissions ##
-	directory node['home_dir'] do
-		user 		node['user']
-		group 		node['group']
+	directory njc['home_dir'] do
+		user 		njc['user']
+		group 		njc['group']
 		mode 		'0755'
 		recursive 	true
 	end
 
 	## Start Jenkins service ##
-	service node['repo']['name'] do 
+	service njc['repo']['name'] do 
 		supports 	status: true, restart: true, reload: true
 		action 		[ :enable, :start ]
 	end
