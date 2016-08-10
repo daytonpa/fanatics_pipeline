@@ -4,9 +4,16 @@
 #
 # Copyright (c) 2016 Patrick Dayton, All Rights Reserved.
 #
+## Install the yum_repository resource, git, chef-zero, and sysctl ##
 
-## Install the yum_repository resource ##
 include_recipe 'yum::default'
+include_recipe 'sysctl::default'
+include_recipe 'git'
+include_recipe 'chef-zero'
+
+sysctl_param 'net.ipv6.conf.all.disable_ipv6' do
+	value 1
+end
 
 ##  Recipes for setting up and installing Jenkins ##
 %w( java jenkins_create_user jenkins_install
@@ -15,7 +22,8 @@ include_recipe 'yum::default'
 	include_recipe "fanatics_pipeline::#{recipe}"
 end
 
-# include_recipe 'chef-zero'
+include_recipe 'git'
+include_recipe 'chef-zero'
 
 ## Recipes for building and setting up the pipeline ##
 %w( pipeline_berkshelf ).each do |recipe|

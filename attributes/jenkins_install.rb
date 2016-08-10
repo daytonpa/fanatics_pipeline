@@ -8,7 +8,7 @@
 default['jenkins-centos'].tap do |default|
 
 	## Basic Jenkins configurations ##
-	default['ipaddress'] = 'http://localhost'
+	default['ipaddress'] = 'http://0.0.0.0'
 	default['port'] = '8080'
 	default['url'] = "#{default['ipaddress']}:#{default['port']}"
 

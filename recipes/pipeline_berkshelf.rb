@@ -21,4 +21,10 @@ node['jenkins-centos'].tap do |node|
   		owner node['user']
   		group node['group']
 	end
+
+	chef_gem 'berkshelf' do
+		action :install
+		compile_time false
+	end
+
 end
