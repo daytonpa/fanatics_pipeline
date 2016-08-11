@@ -7,9 +7,9 @@
 # Download the Jenkins repository and key, and install
 #
 node['jenkins-centos'].tap do |njc|
-	
+
 	njc['repo'].tap do |repo|
-	
+
 		## Download the Jenkins repo ##
 		yum_repository repo['name'] do
 			description 	repo['description']
@@ -19,7 +19,9 @@ node['jenkins-centos'].tap do |njc|
 			timeout 		repo['timeout']
 		end
 		## Install the Jenkins package ##
-		yum_package repo['name']
+		yum_package repo['name'] do
+			notifies :start, "service[#{njc['repo']['name']}]", :immediate
+		end
 		yum_package 'wget'
 	end
 
@@ -32,7 +34,7 @@ node['jenkins-centos'].tap do |njc|
 	end
 
 	## Start Jenkins service ##
-	service njc['repo']['name'] do 
+	service njc['repo']['name'] do
 		supports 	status: true, restart: true, reload: true
 		action 		[ :enable, :start ]
 	end
