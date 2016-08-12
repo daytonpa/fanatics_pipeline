@@ -5,19 +5,19 @@
 # Copyright (c) 2016 Patrick Dayton, All Rights Reserved.
 #
 
-default['jenkins-centos'].tap do |default|
+default['jenkins-centos'].tap do |d|
 
 	## Basic Jenkins configurations ##
-	default['ipaddress'] = 'http://0.0.0.0'
-	default['port'] = '8080'
-	default['url'] = "#{default['ipaddress']}:#{default['port']}"
+	d['ipaddress'] = 'http://127.0.0.1'
+	d['port'] = '8080'
+	d['url'] = "#{d['ipaddress']}:#{d['port']}"
 
-	default['jenkins_args'] = nil
-	default['java_options'] = nil
-	default['host'] = 'localhost'
+	d['jenkins_args'] = nil
+	d['java_options'] = nil
+	d['host'] = 'localhost'
 
 	## Jenkins Repository ##
-	default['repo'].tap do |repo|
+	d['repo'].tap do |repo|
 
 		repo['name'] = 'jenkins'
 		repo['description'] = 'Jenkins Repository'

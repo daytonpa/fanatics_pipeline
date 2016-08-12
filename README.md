@@ -12,9 +12,9 @@ FINISHED:  Jenkins serverspec
 FINISHED:  Create .berksfile and config.json
 FINISHED:  Pipeline serverspec
 	- .berksfile and config.json
+FINISHED:  Download Jenkins CLI upon first converge
 
 
-TODO:  Finish job creation and maintenance from the Berksfile.
-TODO:  Find out why the Jenkins CLI won't consistently download and install.
+TODO:  Grab Flix cookbook form Git and push it to a chef server.
 TODO:  Update test files
 

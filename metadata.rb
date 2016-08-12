@@ -6,6 +6,6 @@ description 'Installs/Configures fanatics_pipeline'
 long_description 'Installs/Configures fanatics_pipeline'
 version '0.1.0'
 
-%w{ sysctl yum chef-zero git }.each do |cookbook|
+%w{ sysctl yum chef-zero git jenkins pipeline }.each do |cookbook|
 	depends cookbook
 end

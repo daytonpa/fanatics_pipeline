@@ -5,18 +5,18 @@
 # Copyright (c) 2016 Patrick Dayton, All Rights Reserved.
 #
 
-default['jenkins-centos'].tap do |default|
+default['jenkins-centos'].tap do |d|
 
 	## User ##
-	default['user'] = 'jenkins'
-	default['comment'] = 'default user'
+	d['user'] = 'jenkins'
+	d['comment'] = 'default user'
 
 	## Group and Owner ##
-	default['group'] = 'jenkins'
-	default['owner'] = 'jenkins'
+	d['group'] = 'jenkins'
+	d['owner'] = 'jenkins'
 
 	## Home and Logs directory ##
-	default['home_dir'] = '/var/lib/jenkins'
-	default['logs_dir'] = '/var/log/jenkins'
+	d['home_dir'] = '/var/lib/jenkins'
+	d['logs_dir'] = '/var/log/jenkins'
 
 end

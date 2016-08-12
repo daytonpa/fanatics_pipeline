@@ -22,9 +22,6 @@ end
 	include_recipe "fanatics_pipeline::#{recipe}"
 end
 
-include_recipe 'git'
-include_recipe 'chef-zero'
-
 ## Recipes for building and setting up the pipeline ##
 %w( pipeline_berkshelf ).each do |recipe|
 	puts "Converging recipe #{recipe}..."

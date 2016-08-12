@@ -4,23 +4,23 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 #
-node['jenkins-centos'].tap do |node|
+node['jenkins-centos'].tap do |njc|
 	## Create the Jenkins plugins directory ##
 
 	# Download the remote Jenkins CLI ##
 	# execute 'download_and_install_Jenkins_CLI' do
-	# 	command "wget --no-check-certificate #{node['url']}/jnlpJars/jenkins-cli.jar"
-	# 	creates "#{node['plugins_dir']}/jenkins-cli.jar"
+	# 	command "wget --no-check-certificate #{njc['url']}/jnlpJars/jenkins-cli.jar"
+	# 	creates "#{njc['plugins_dir']}/jenkins-cli.jar"
 	# 	action :run
-	# 	notifies :restart, "service[#{node['repo']['name']}]", :immediately
+	# 	notifies :restart, "service[#{njc['repo']['name']}]", :immediately
 	# end
 
-	remote_file "#{node['plugins_dir']}/jenkins-cli.jar" do
-		source "#{node['url']}/jnlpJars/jenkins-cli.jar"
+	remote_file "#{njc['plugins_dir']}/jenkins-cli.jar" do
+		source "#{njc['url']}/jnlpJars/jenkins-cli.jar"
 		action :create
-		ignore_failure true
+		ignore_failure false
 		mode '0755'
-		notifies :restart, "service[#{node['repo']['name']}]", :immediately
+		notifies :restart, "service[#{njc['repo']['name']}]", :immediately
 	end
 end
 
