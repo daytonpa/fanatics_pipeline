@@ -14,5 +14,5 @@ default['jenkins-centos'].tap do |d|
 	d['jenkins_plugins'] = %w(scm-api git git-client github-api github chef-identity )
 
 	## Extra plugins (if you want them) ##
-	d['extra_plugins'] = %w( chucknorris remote-terminal-access cli-commander )
+	d['extra_plugins'] = %w( chucknorris )
 end

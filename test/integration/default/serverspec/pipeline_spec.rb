@@ -11,7 +11,9 @@ describe 'fanatics_pipeline::default' do
 		end
 	end
 
-	describe file('/var/lib/jenkins/.berkshelf') do
+	home = '/var/lib/jenkins'
+
+	describe file("#{home}/.berkshelf") do
 		it { should exist }
 		it { should be_directory }
 		it { should be_owned_by 'jenkins' }
@@ -19,11 +21,34 @@ describe 'fanatics_pipeline::default' do
 		it { should be_mode '755' }
 	end
 
-	describe file('/var/lib/jenkins/.berkshelf/config.json') do
+	describe file("#{home}/.berkshelf/config.json") do
 		it { should exist }
 		it { should be_file }
 		it { should be_owned_by 'jenkins' }
 		it { should be_grouped_into 'jenkins' }
+	end
+
+	describe file("#{home}/.gitconfig") do
+		it { should exist }
+		it { should be_file }
+		it { should be_owned_by 'jenkins' }
+		it { should be be_grouped_into 'jenkins' }
+	end
+
+	describe file("#{home}/.chef") do
+		it { should exist }
+		it { should be_directory }
+		it { should be_mode '755' }
+		it { should be_owned_by 'jenkins' }
+		it { should be_grouped_into 'jenkins' }
+	end
+
+	describe file("#{home}/.chef/knife.rb") do
+		it { should exist }
+		it { should be_file }
+		it { should be_owned_by 'jenkins' }
+		it { should be_grouped_into 'jenkins' }
+		it { should be_mode '644'}
 	end
 
 end

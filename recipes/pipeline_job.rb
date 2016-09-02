@@ -1,13 +1,6 @@
 ## Set up chef-repo job per chef-repo ##
-chef_repos.each do |repo|
-    create_jenkins_job(
-        repo['name'], repo['url'], '_knife_commands.sh.erb',
-        node['jenkins-centos']['job']['cookbook'])
 
-    cookbooks_in_berksfile_of_repo(repo['name']).each do |cookbook|
-        Chef::Log.info cookbook.location.to_s
-        create_jenkins_job(
-        cookbook.name, cookbook.location.uri, '_cookbook_command.sh.erb',
-        node['jenkins-centos']['job']['cookbook'])
-    end
-end
+create_jenkins_job('deploy_flix',
+	'https://github.com/daytonpa/deploy_flix.git',
+	[:create, :enable],
+	'deploy_flix')

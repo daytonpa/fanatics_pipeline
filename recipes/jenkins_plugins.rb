@@ -34,7 +34,7 @@ node['jenkins-centos'].tap do |njc|
 		end
 	end
 
-	## Install any extra plugins ##
+	## Install any extra plugins if they exist in the attributes file ##
 	if njc['extra_plugins'] != nil
 		njc['extra_plugins'].each do |plugin|
 			remote_file "#{njc['plugins_dir']}/#{plugin}" do

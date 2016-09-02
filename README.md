@@ -13,6 +13,8 @@ FINISHED:  Create .berksfile and config.json
 FINISHED:  Pipeline serverspec
 	- .berksfile and config.json
 FINISHED:  Download Jenkins CLI upon first converge
+FINISHED:  Create directory for git repos
+FINISHED:  Download deploy_flix cookbook from GitHub
 
 
 TODO:  Grab Flix cookbook form Git and push it to a chef server.

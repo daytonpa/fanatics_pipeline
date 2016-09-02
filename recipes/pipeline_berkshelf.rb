@@ -16,10 +16,30 @@ node['jenkins-centos'].tap do |njc|
 		mode 0755
 	end
 
+	remote_file "#{njc['home_dir']}/.berkshelf/Berksfile" do
+		owner njc['owner']
+		group njc['group']
+		source 'https://github.com/daytonpa/pipeline_berksfile/blob/master/Berksfile'
+		action :create
+	end
+
 	file "#{njc['home_dir']}/.berkshelf/config.json" do
- 		content '{"ssl":{"verify": false }}'
-  		owner njc['user']
+		owner njc['user']
   		group njc['group']
+
+ 		content '{"ssl":{"verify": false }}'
+
+	end
+
+	file "#{njc['home_dir']}/.gitconfig" do
+		owner njc['owner']
+		group njc['group']
+
+		content <<-EOD
+		[http]
+			sslVerify = false
+		EOD
+
 	end
 
 	chef_gem 'berkshelf' do
