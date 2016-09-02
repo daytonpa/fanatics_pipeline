@@ -2,5 +2,5 @@
 
 create_jenkins_job('deploy_flix',
 	'https://github.com/daytonpa/deploy_flix.git',
-	[:create, :enable],
+	'_knife_commands.sh.erb',
 	'deploy_flix')

@@ -24,10 +24,6 @@ node['jenkins-centos'].tap do |njc|
 			action :install
 			notifies :start, "service[#{njc['repo']['name']}]", :immediately
 		end
-
-		## Install wget ##
-		yum_package 'wget'
-
 	end
 
 	## Set the home directory permissions ##

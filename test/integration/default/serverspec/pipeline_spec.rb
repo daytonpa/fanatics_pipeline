@@ -21,6 +21,13 @@ describe 'fanatics_pipeline::default' do
 		it { should be_mode '755' }
 	end
 
+	describe file("#{home}/.berkshelf/Berksfile") do
+		it { should exist }
+		it { should be_file }
+		it { should be_owned_by 'jenkins' }
+		it { should be_grouped_into 'jenkins' }
+	end
+
 	describe file("#{home}/.berkshelf/config.json") do
 		it { should exist }
 		it { should be_file }
@@ -32,7 +39,7 @@ describe 'fanatics_pipeline::default' do
 		it { should exist }
 		it { should be_file }
 		it { should be_owned_by 'jenkins' }
-		it { should be be_grouped_into 'jenkins' }
+		it { should be_grouped_into 'jenkins' }
 	end
 
 	describe file("#{home}/.chef") do
@@ -43,12 +50,12 @@ describe 'fanatics_pipeline::default' do
 		it { should be_grouped_into 'jenkins' }
 	end
 
-	describe file("#{home}/.chef/knife.rb") do
-		it { should exist }
-		it { should be_file }
-		it { should be_owned_by 'jenkins' }
-		it { should be_grouped_into 'jenkins' }
-		it { should be_mode '644'}
-	end
+	# describe file("#{home}/.chef/knife.rb") do
+	# 	it { should exist }
+	# 	it { should be_file }
+	# 	it { should be_owned_by 'jenkins' }
+	# 	it { should be_grouped_into 'jenkins' }
+	# 	it { should be_mode '644'}
+	# end
 
 end
