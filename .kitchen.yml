@@ -4,6 +4,8 @@ driver:
 
 provisioner:
   name: chef_zero
+  chef_omnibus_install_options: -P chefdk
+  chef_omnibus_root: /opt/chefdk
 
 # Uncomment the following verifier to leverage Inspec instead of Busser (the
 # default verifier)
