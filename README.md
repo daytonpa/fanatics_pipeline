@@ -1,22 +1,24 @@
-# fanatics_pipeline
+## fanatics_pipeline
 
 This cookbook is in development for a cookbook pipeline using Jenkins 2 on CentOS.
 
-FINISHED:  Disable IPv6 ports
-FINISHED:  Install Jenkins 2
-FINISHED:  Download and install necessary Jenkins plugins (latest .hpi files)
-FINISHED:  Jenkins serverspec
-	- plugins
-	- directories
-	- service
-FINISHED:  Create .berksfile and config.json
-FINISHED:  Pipeline serverspec
-	- .berksfile and config.json
-FINISHED:  Download Jenkins CLI upon first converge
-FINISHED:  Create directory for git repos
-FINISHED:  Download deploy_flix cookbook from GitHub
+### TO-DO List for pipeline  :thumbsup:
 
+- [x] Disable IPv6 ports
+- [x] Install Jenkins 2
+- [x] Download and install necessary Jenkins plugins (latest .hpi files)
 
-TODO:  Grab Flix cookbook form Git and push it to a chef server.
-TODO:  Update test files
+- [x] Jenkins serverspec
+	- [x] plugins
+	- [x] directories
+	- [x] service
 
+- [x] Create .berksfile and config.json
+- [x] Pipeline serverspec
+	- [x] .berksfile and config.json
+
+- [] Download Jenkins CLI upon first converge :trollface:
+- [x] Create directory for git repos
+
+- [] Grab deploy_flix and rr_install cookbook from Git and push it to a chef server
+- [] Update test files
