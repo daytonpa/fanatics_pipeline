@@ -5,11 +5,11 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 #
 
-node['jenkins-centos'].tap do |njc|
+node['jenkins-centos'].tap do |n|
 	## Create plugin directory ##
-	directory njc['plugins_dir'] do
-		user njc['user']
-		group njc['group']
+	directory n['plugins_dir'] do
+		user n['user']
+		group n['group']
 		mode '0644'
 		recursive true
 		action :create
@@ -19,35 +19,34 @@ node['jenkins-centos'].tap do |njc|
 	## new plugins are installed, or if installed plugins are modified.	##
 
 	## Install default plugins ##
-	njc['jenkins_plugins'].each do |plugin|
-		remote_file "#{njc['plugins_dir']}/#{plugin}" do
-			owner njc['owner']
-			group njc['group']
+	n['jenkins_plugins'].each do |plugin|
+		remote_file "#{n['plugins_dir']}/#{plugin}" do
+			owner n['owner']
+			group n['group']
 			mode '0755'
 
 			source 	"http://updates.jenkins-ci.org/latest/#{plugin}.hpi"
 			action 	:create
 			ignore_failure true
-
-			notifies :reload, "service[#{njc['repo']['name']}]", :delayed
-
 		end
 	end
 
 	## Install any extra plugins if they exist in the attributes file ##
-	if njc['extra_plugins'] != nil
-		njc['extra_plugins'].each do |plugin|
-			remote_file "#{njc['plugins_dir']}/#{plugin}" do
-				owner njc['owner']
-				group njc['group']
+	if n['extra_plugins'] != nil
+		n['extra_plugins'].each do |plugin|
+			remote_file "#{n['plugins_dir']}/#{plugin}" do
+				owner n['owner']
+				group n['group']
 				mode '0755'
 
 				source "http://updates.jenkins-ci.org/latest/#{plugin}.hpi"
 				action :create
 				ignore_failure true
-
-				notifies :reload, "service[#{njc['repo']['name']}]", :delayed
 			end
 		end
+	end
+	
+	service n['repo']['name'] do
+		action :reload
 	end
 end

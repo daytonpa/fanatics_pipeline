@@ -10,7 +10,7 @@ include_recipe 'yum::default'
 include_recipe 'sysctl::default'
 include_recipe 'git'
 include_recipe 'chef-zero'
- 
+
 ##  Install wget  ##
 yum_package 'wget'
 
