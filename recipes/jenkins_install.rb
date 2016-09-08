@@ -22,6 +22,7 @@ node['jenkins-centos'].tap do |n|
 		## Install the Jenkins package and immediately start Jenkins ##
 		yum_package repo['name'] do
 			action :install
+			## Start Jenkins service ##
 			notifies :start, "service[#{n['repo']['name']}]", :immediately
 		end
 	end
@@ -34,7 +35,6 @@ node['jenkins-centos'].tap do |n|
 		recursive 	true
 	end
 
-	## Start Jenkins service ##
 	service n['repo']['name'] do
 		supports 	status: true, restart: true, reload: true
 		action 		:enable

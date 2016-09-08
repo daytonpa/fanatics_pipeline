@@ -45,7 +45,7 @@ node['jenkins-centos'].tap do |n|
 			end
 		end
 	end
-	
+
 	service n['repo']['name'] do
 		action :reload
 	end
