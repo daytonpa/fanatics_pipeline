@@ -10,7 +10,7 @@ describe 'fanatics_pipeline::default' do
  	describe group('jenkins') do
   		it { should exist }
   	end
-    
+
     describe user('jenkins') do
   		it { should exist }
   		it { should belong_to_group 'jenkins' }
@@ -66,7 +66,10 @@ describe 'fanatics_pipeline::default' do
   	end
 
   	## Services ##
-  	describe service('jenkins') do
-  		it { should be_running }
+  	%w( jenkins sysctl ).each do |s|
+        describe service(s) do
+            it { should be_enabled }
+  		    it { should be_running }
+        end
   	end
 end

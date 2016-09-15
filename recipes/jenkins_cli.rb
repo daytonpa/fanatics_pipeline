@@ -22,5 +22,7 @@ node['jenkins-centos'].tap do |njc|
 		mode '0755'
 		notifies :restart, "service[#{njc['repo']['name']}]", :immediately
 	end
-end
 
+	jenkins_user node['jenkins-centos']['user']
+
+end

@@ -28,6 +28,8 @@ node['jenkins-centos'].tap do |n|
 			source 	"http://updates.jenkins-ci.org/latest/#{plugin}.hpi"
 			action 	:create
 			ignore_failure true
+
+			not_if "ls plugins | grep #{plugin}"
 		end
 	end
 
@@ -42,6 +44,8 @@ node['jenkins-centos'].tap do |n|
 				source "http://updates.jenkins-ci.org/latest/#{plugin}.hpi"
 				action :create
 				ignore_failure true
+
+				not_if "ls plugin | grep #{plugin}"
 			end
 		end
 	end

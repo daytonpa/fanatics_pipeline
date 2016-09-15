@@ -37,6 +37,6 @@ node['jenkins-centos'].tap do |n|
 
 	service n['repo']['name'] do
 		supports 	status: true, restart: true, reload: true
-		action 		:enable
+		action 		[:start, :enable]
 	end
 end
